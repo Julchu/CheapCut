@@ -1,0 +1,30 @@
+- Open cmdline (Bash, whatever) and run `npm i express-generator -g'
+-- This will install ExpressJS globally (lets you run from cmdline), instead of specifically to your folder/project. I believe it stores ExpressJS modules in %APPDATA%
+
+- Run express --view=pug <projectname>: this will create a barebones project and folder hierarchy: My Documents\<projectname>
+
+- cd to your project location (like My Documents)
+
+- Install NodeJS (comes with npm: node packaging manager)
+
+- Go to a folder that you want to create a project in (will create a new folder)
+-- (For example, go to My Documents)
+
+- If you want to use a MySQL database, run command npm i mysql -s, will install MySQL (NodeJS module) specifically for your project
+
+- If you want to use a MongoDB database, you can use MongoDB (npm i mongodb) and optionally Mongoose (npm i mongoose)
+
+I've used both in different projects
+
+- If you want to use a Redis database, run command npm i redis -s. I'm gonna learn Redis in this next (basic) project
+
+Express lets you chose a templating engine to render your views (front-end), so that you can pass variables live (which you can't do in basic HTML)
+
+https://expressjs.com/en/guide/using-template-engines.html
+
+I'm not familiar with it, my first project I disabled templating and used basic HTML but I was told it was inefficient
+
+Different templating engines include Pug (used to be Jade), EJS (common, my friend suggested that one), Mustache, etc...
+
+https://developer.ibm.com/node/2014/11/11/compare-javascript-templates-jade-mustache-dust/
+
