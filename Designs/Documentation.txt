@@ -18,3 +18,35 @@
 
 
 - Registration page
+    -Front-end
+        -Has input boxes for username and password
+        -Has options for whether registering customer or barber account
+        -Has submit button to register profile
+    -Back-end
+
+- Barber profile creation page
+    -Front-end
+        -Has input boxes for name, experience, location, contact info, availability, and a bio
+        -Has input for photos to be added, examples of work
+        -Has submit button to finish profile creation
+    -Back-end
+
+- Search page
+    -Front-end 
+        -Has input for location
+        -Has a submit button to search 
+        -Has option to filter by distance (ex. only within x km)
+    -Back-end
+
+- Results page
+    -Front-end
+        -Scrolling list of barber profiles
+            -Profiles show pictures, name, next available appointment, and contact info/address
+        -Sort by drop down
+            -sort by location, reviews, next availability, or price range
+        -Click on barber to open their barber page
+
+    -Back-end
+
+- Barber page
+    -
