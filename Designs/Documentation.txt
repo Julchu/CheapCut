@@ -45,6 +45,7 @@
         -Sort by drop down
             -sort by location, reviews, next availability, or price range
         -Click on barber to open their barber page
+        -Option to view in map view instead of list view
 
     -Back-end
 
@@ -54,6 +55,17 @@
         -Input box for reviews
         -Links to socials
         -Button to book an appointment
+    -Back-end
+
+- Book an Appointment page
+    -Front-end
+        -Calendar in week view
+            -Arrow buttons to switch weeks
+        -Each day has a column of time slots from open-close
+        -Open time slots are white, taken are greyed/blacked out
+        -Click to select slot
+        -Button to book appointment
+    -Back-end
 
 - Database
 	- Users
