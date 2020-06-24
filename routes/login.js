@@ -2,7 +2,7 @@
 
 
 let express = require("express");
-let User = require("../services/mongo").User;
+//let User = require("../services/mongo").User;
 let router = express.Router();
 
 router.get("/", function(req, res, next) {
@@ -14,8 +14,8 @@ router.get("/", function(req, res, next) {
 /*
 // Basic login functionality, all credentials (non-encrypted) saved on MongoDB
 router.post("/", async function(req, res) {
-	console.log(req.body.email);
-    console.log(req.body.password);
+	console.log("A : " , req.body.email);
+    console.log("B : " , req.body.password);
     
 	let exists = await User.find({ email: req.body.email });
 	if (exists == "") {
@@ -25,8 +25,8 @@ router.post("/", async function(req, res) {
 			password: req.body.password
 		});
 	}
-});
-*/
+});*/
+
 module.exports = router;
 
 /*

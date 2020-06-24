@@ -1,0 +1,21 @@
+extend layout
+
+block content
+	.jumbotron.text-center
+		h1 #{title}
+		p #{about}
+		form(method="POST" action='/login')
+			.form-group
+				//- label(for='email') Email:
+				input#email.form-control(type='text', placeholder="Email")
+
+			.form-group
+				//- label(for='password') Password:
+				input#password.form-control(type='password', placeholder="Password")
+
+				p Show Password:
+					input#checkId(type="checkbox", onclick="showPassword('checkId', 'password')")
+
+			#Save.btn-group
+				button.btn.btn-primary Login
+				button.btn.btn-light(type="reset") Reset
