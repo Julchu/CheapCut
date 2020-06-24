@@ -18,3 +18,15 @@
 
 
 - Registration page
+
+- Database
+	- Users
+		- Generic
+			- Username
+			- Date joined
+			- Contact info
+		- Barber
+			- Bio
+			- Social media links
+		- Customer
+			- 
