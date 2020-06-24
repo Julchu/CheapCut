@@ -5,7 +5,7 @@ let router = express.Router();
 
 router.get("/", function(req, res, next) {
 	res.render("login", {
-		title: "Login",
+		title: "CheapCut",
 		about: "Sign-in/Register"
 	});
 });
