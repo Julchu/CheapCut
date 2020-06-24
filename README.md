@@ -1,4 +1,5 @@
 # CheapCut: a place for new barbers to exchange experience for affordable haircuts
+Hosted with Heroku @ https://cheapcut.herokuapp.com/
 
 ## About 
 CheapCut is a web app to find affordable local haircuts in exchange for new barbers to practice their expertise
