@@ -87,5 +87,8 @@ CheapCut is a web app to find affordable local haircuts in exchange for new barb
 **Collapsable nav bar**
 -- https://www.w3schools.com/bootstrap4/tryit.asp?filename=trybs_navbar_collapse
 
-## Trello board
+**Trello board**
 -- https://trello.com/b/5Y90A6Vz/cheapcut
+
+**Template project code**
+-- https://github.com/Julchu/TeaWork
