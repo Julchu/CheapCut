@@ -1,0 +1,20 @@
+- General
+	- Database: MongoDB
+	- 
+
+- Login page
+	- Front-end
+		- Has an input box for username and password
+		- Has a submit button to login
+
+	- Back-end
+		- Username
+
+		- Password
+			- Encrypted using bcrypt (not bcrypt.JS)
+		- User sessions:
+			- Purpose: 
+			- Uses Passport.JS
+
+
+- Registration page
