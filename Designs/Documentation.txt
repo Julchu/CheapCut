@@ -18,7 +18,6 @@
 
 
 - Registration page
-<<<<<<< HEAD
     -Front-end
         -Has input boxes for username and password
         -Has options for whether registering customer or barber account
@@ -50,8 +49,11 @@
     -Back-end
 
 - Barber page
-    -
-=======
+    -Front-end 
+        -Barber name, location, price range, photos, contact info, and reviews
+        -Input box for reviews
+        -Links to socials
+        -Button to book an appointment
 
 - Database
 	- Users
@@ -64,4 +66,3 @@
 			- Social media links
 		- Customer
 			- 
->>>>>>> 32e9b8c40bd9809a813e770df543d46a6cc10767
