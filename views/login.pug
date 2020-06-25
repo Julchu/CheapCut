@@ -4,9 +4,9 @@ block content
 		h1 #{title}
 		p #{about}
 		form(method="POST" action='/login')
-			input#email(type='text', placeholder="Email")
+			input#username(name="username", type='text', placeholder="Username")
 
-			input#password(type='password', placeholder="Password")
+			input#password(name="password", type='text', placeholder="Password")
 
 			#Save
 				button Login 
