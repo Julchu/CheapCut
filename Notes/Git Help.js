@@ -38,3 +38,6 @@ git push -u origin master
 
 // If cloning existing repo
 git remote add origin <URL>
+
+// Prune (remove) local versions of remote branches that have been deleted
+git remote prune origin
