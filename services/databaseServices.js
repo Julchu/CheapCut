@@ -9,4 +9,4 @@ if (typeof process.env.MONGODB_URI == 'undefined') {
 	uri = process.env.MONGODB_URI;
 }
 
-mongoose.connect(uri, {useNewUrlParser: true});
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
