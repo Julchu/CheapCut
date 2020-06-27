@@ -8,4 +8,4 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
-//port is 3000
+//port is 8080

@@ -13,8 +13,7 @@ router.post("/", async (req, res, next) => {
 	let username = req.body.username;
 	let password = req.body.password;
 	let userType = req.body.userType;
-	// let userType = "customer";
-
+	
 	let user = {
 		username: username,
 		password: password,

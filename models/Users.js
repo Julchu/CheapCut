@@ -19,7 +19,7 @@ var userSchema = new mongoose.Schema({
 	joinDate: {type: Date, required: true, default: Date.now()},
 	
 	// User type must be either customer or barber: enumerators "customer", "barber"
-	userType: {type: String, required: true, enum: ['Customer', 'Barber']},
+	userType: {type: String, required: true, enum: ['customer', 'barber']},
 
 	// TODO: validate phone number (REGEX?)
 	phone: {type: Number},
