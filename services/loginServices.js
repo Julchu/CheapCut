@@ -4,11 +4,10 @@ let Barber = require('../models/Users').Barber;
 let Customer = require('../models/Users').Customer;
 let User = require('../models/Users').User;
 
+let bcrypt = require('bcrypt');
 let express = require("express");
 let router = express.Router();
 
-let bcrypt = require('bcrypt');
-const saltRounds = 12;
 
 let addUser = async function(user, hash) {
 	let newUser;
@@ -31,11 +30,33 @@ let createUser = async (user) => {
 	// If username doesn't exist, check datatype to create specific user type (barber, customer)
 	if (exists == "") {
 		// If username doesn't exist, check datatype to create specific user type (barber, customer)
-		bcrypt.hash(user.password, saltRounds, function(err, hash) {
+		const saltRounds = 12;
+		bcrypt.hash(user.password, saltRounds, (err, hash) => {
 			addUser(user, hash);
 		});
+
+		console.log("Trying to create user");
+		console.log("User created");
 	} else {
 		console.log("User already exists");
 	}
 };
-module.exports = {createUser};
+
+let loginUser = async (user) => {
+	let exists = await User.find({ username: user.username});
+	let login = false;
+	if (exists != "") {
+		if (user.password === exists.password) {
+			login = true;
+			console.log("User credentials correct")
+		} else {
+			console.log("Incorrect password")
+		}
+
+	} else {
+		console.log("User does not exist")
+	}
+	return login
+}
+
+module.exports = {createUser, loginUser};
