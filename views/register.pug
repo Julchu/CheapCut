@@ -3,7 +3,7 @@ extend layout
 block content
 	h1=title
 	p #{about}
-	form(method="POST" action='/login')
+	form(method="POST" action='/register')
 		input#username(type='text', name="username", placeholder="Username")
 		input#password(type='text', name="password", placeholder="Password")
 		br
@@ -11,5 +11,5 @@ block content
 		label(for="customer") Customer
 		input#barber(type='radio', name="userType", value="barber")
 		label(for="barber") Barber
-
-		button(type="submit") Login
+		br
+		button(type="submit") Register
