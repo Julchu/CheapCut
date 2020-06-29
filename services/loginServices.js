@@ -11,7 +11,7 @@ let createUser = async (user) => {
 	let exists = await User.find({ username: user.username });
 	// If username doesn't exist, check datatype to create specific user type (barber, customer)
 	if (exists == "") {
-		console.log("here")
+		console.log("Trying to create user");
 		let newUser;
 		if (user.userType === "barber") {
 			newUser = new Barber({});			
@@ -22,6 +22,7 @@ let createUser = async (user) => {
 		newUser.password = user.password;
 		newUser.userType = user.userType;
 		await newUser.save();
+		console.log("User created");
 	} else {
 		console.log("User exists");
 	}
