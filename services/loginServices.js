@@ -18,6 +18,7 @@ let createUser = async (user) => {
 		} else if (user.userType === "customer") {
 			newUser = new Customer({});
 		}
+
 		newUser.username = user.username;
 		newUser.password = user.password;
 		newUser.userType = user.userType;
