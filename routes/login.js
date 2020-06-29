@@ -5,6 +5,7 @@ let createUser = require("../services/loginServices").createUser;
 let express = require("express");
 let router = express.Router();
 
+
 router.get("/", (req, res, next) => {
 	res.render("login", {title: "CheapCut",	about: "A place for new barbers to exchange experience for affordable haircuts"});
 });
@@ -20,6 +21,7 @@ router.post("/", async (req, res, next) => {
 		userType: userType
 	}
 
+	//Goes to loginServices.js
 	await createUser(user);
 	
 	res.render("login", {title: "CheapCut",	about: "A place for new barbers to exchange experience for affordable haircuts"});
