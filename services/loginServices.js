@@ -1,26 +1,13 @@
 "use strict";
 
-let Barber = require('../models/Users').Barber;
-let Customer = require('../models/Users').Customer;
-let User = require('../models/Users').User;
-
 let bcrypt = require('bcrypt');
 let express = require("express");
 let router = express.Router();
 
-
-let addUser = async function(user, hash) {
-	let newUser;
-	if (user.userType === "barber") {
-		newUser = new Barber({});			
-	} else if (user.userType === "customer") {
-		newUser = new Customer({});
-	}
-	newUser.username = user.username;
-	newUser.password = hash;
-	newUser.userType = user.userType;
-	await newUser.save();
-}
+let Barber = require('../models/Users').Barber;
+let Customer = require('../models/Users').Customer;
+let User = require('../models/Users').User;
+let bcryptService = require("./bcryptService");
 
 let createUser = async (user) => {
 	// Checks if barber's username exists in database
@@ -30,10 +17,19 @@ let createUser = async (user) => {
 	// If username doesn't exist, check datatype to create specific user type (barber, customer)
 	if (exists == "") {
 		// If username doesn't exist, check datatype to create specific user type (barber, customer)
-		const saltRounds = 12;
-		bcrypt.hash(user.password, saltRounds, (err, hash) => {
-			addUser(user, hash);
-		});
+
+		let password = await bcryptService.encrypt(user.password);
+
+		let newUser;
+		if (user.userType === "barber") {
+			newUser = new Barber({});			
+		} else if (user.userType === "customer") {
+			newUser = new Customer({});
+		}
+		newUser.username = user.username;
+		newUser.password = password;
+		newUser.userType = user.userType;
+		await newUser.save();
 
 		console.log("Trying to create user");
 		console.log("User created");
