@@ -23,8 +23,27 @@ var userSchema = new mongoose.Schema({
 
 	// TODO: validate phone number (REGEX?)
 	phone: {type: Number},
+
+	// TODO: Facebook, Instagram APIs
 	contactInfo: [{type: String}],
-	rating: {type: Number, default: 5}
+
+	// Average of user's ratings from other people
+	rating: {type: Number, default: 5},
+
+	// Dictionary of user's ratings of other people (to ensure only one rating for a person)
+	userRatingsNum: {type: Map, of: String},
+	
+	// Dictionary of user's ratings description of other people (to give a reason for a rating (contestable))
+	userRatingsDesc: {type: Map, of: String},
+
+	// TODO: upcoming (singular) appointment and list of past appointments: {reference appointment database object};
+	upcomingApt: {type: mongoose.Schema.Types.ObjectId, ref: 'Appointments'},
+	pastApt: [{type: mongoose.Schema.Types.ObjectId, ref: 'Appointments'}]
+
+	/* Mongoose schema referencing other users; populate documentation
+		https://stackoverflow.com/questions/18001478/referencing-another-schema-in-mongoose
+	*/
+
 }, options);
 
 let User = mongoose.model("User", userSchema, "Users");
