@@ -1,9 +1,10 @@
 "use strict";
 
-let createUser = require("../services/loginServices").createUser;
+let loginUser = require("../services/loginServices").loginUser;
 
 let express = require("express");
 let router = express.Router();
+
 
 router.get("/", (req, res, next) => {
 	res.render("login", {title: "CheapCut",	about: "A place for new barbers to exchange experience for affordable haircuts"});
@@ -12,15 +13,13 @@ router.get("/", (req, res, next) => {
 router.post("/", async (req, res, next) => {
 	let username = req.body.username;
 	let password = req.body.password;
-	let userType = req.body.userType;
 	
 	let user = {
 		username: username,
 		password: password,
-		userType: userType
 	}
-
-	await createUser(user);
+	
+	let login = await loginUser(user);
 	
 	res.render("login", {title: "CheapCut",	about: "A place for new barbers to exchange experience for affordable haircuts"});
 });
