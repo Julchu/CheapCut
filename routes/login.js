@@ -13,7 +13,14 @@ router.get("/", (req, res, next) => {
 router.post("/", async (req, res, next) => {
 	let username = req.body.username;
 	let password = req.body.password;
-	
+	console.log(req.body.username);
+	/*
+	if (req.body.hasOwnProperty("username")) {
+		console.log("username clicked");
+	} else if (req.body.hasOwnProperty("password")) {
+		console.log("password clicked");
+	}
+	*/
 	let user = {
 		username: username,
 		password: password,
