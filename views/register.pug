@@ -3,6 +3,8 @@ extend layout
 block content
 	h1=title
 	p #{about}
+	form(method="get" action="/login")
+		button Login
 	form(method="POST" action='/register')
 		input#username(type='text', name="username", placeholder="Username")
 		input#password(type='text', name="password", placeholder="Password")
