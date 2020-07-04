@@ -14,12 +14,7 @@ router.post("/", async (req, res, next) => {
 	let password = req.body.password;
 	let userType = req.body.userType;
 	
-	let user = {
-		username: username,
-		password: password,
-		userType: userType
-	}
-	await createUser(user);
+	let register = await createUser(username, password, userType);
 	
 	res.redirect("/login");
 });
