@@ -9,5 +9,5 @@ router.get('/', async (req, res, next) => {
 	res.render('customerProfile', { customerName: customerInfo.username, userType: customerInfo.userType});
 });
 
-
 module.exports = router;
+// Fixing file capitalization
