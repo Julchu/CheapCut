@@ -1,0 +1,15 @@
+extend layout
+
+block content
+	h1=title
+	br
+	|rating:
+	h2=rating
+	br
+	h3=contactInfo
+
+	block content
+		img.className#IdName(src="./routes/placeholder.png" alt="Placeholder Image")
+	p #{about}
+	
+	
