@@ -8,11 +8,20 @@ let getCustomerInfo = async (username) => {
     if (customer != "") {
 		customerInfo = {
 			username: customer.username,
-			userType: customer.userType
+            userType: customer.userType,
+            userRating: customer.rating
 		}
-     }
+    }
 	return customerInfo
 	
 }
 
-module.exports = {getCustomerInfo};
+let setUserRating = async (username, rating) => {
+	let user = await User.findOne({username: username});
+	user.rating = rating;
+	await user.save();
+}
+
+
+
+module.exports = {getCustomerInfo, setUserRating};

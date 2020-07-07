@@ -28,7 +28,7 @@ var userSchema = new mongoose.Schema({
 	contactInfo: [{type: String}],
 
 	// Average of user's ratings from other people
-	rating: {type: Number, default: 5},
+	rating: {type: Number},
 
 	// Dictionary of user's ratings of other people (to ensure only one rating for a person)
 	userRatingsNum: {type: Map, of: String},
