@@ -1,0 +1,10 @@
+extend layout
+
+block content
+	h1=customerName
+	p #{userType}
+	p #{userRating}
+	form(method="POST" action='/customerprofile')
+		input(type='number', min="1", max="5", name="rating", placeholder="Rating")
+		br
+		button(type="submit") Submit
