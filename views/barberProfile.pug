@@ -3,13 +3,21 @@ extend layout
 block content
 	h1=title
 	br
+	
 	|rating:
 	h2=rating
 	br
-	h3=contactInfo
+	
+	|contact info:
+	h6=contactInfo
+	br
 
 	block content
 		img.className#IdName(src="./routes/placeholder.png" alt="Placeholder Image")
+	br
+	br
+	
+	|bio: 
 	p #{about}
 	
 	

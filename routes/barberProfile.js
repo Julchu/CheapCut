@@ -8,24 +8,25 @@ let router = express.Router();
 
 
 
-barberId = "njackie" //Temp, for testing purposes
 
-let testDB = async (id) => {
+
+let getUser = async (id) => {
     user = await User.findOne({username: barberId});
     return user
 }
 
-barber = testDB(barberId);
 
-router.get("/", (req, res, next) => {
-    name = "placeholder name"
-    bio = "placeholder bio";
-    contactInfo = "xxx - xxx - xxxx";
-    ratingNum = 5;
+
+ router.get("/", async (req, res, next) => {
+    barberId = "bjackie" //Temp, for testing purposes
+    let barber = await getUser(barberId);
     
-    res.render("barberProfile", {title: name, about: bio, contact: contactInfo, rating: ratingNum});
-    //res.render("login", {headline: "Barber", about: "profile"});
+    name = barber.username
+    bio = barber.bio
+    contactInfo = barber.contactInfo
+    ratingNum = barber.rating
 
+    res.render("barberProfile", {title: name, about: bio, contact: contactInfo, rating: ratingNum});
 });
 
 module.exports = router;
