@@ -1,25 +1,14 @@
 "Use Strict";
 
 let loginUser = require("../services/loginServices").loginUser;
+let getUserService = require("../services/getUserService");
 
 let express = require("express");
-const { User } = require("../models/Users");
 let router = express.Router();
 
-
-
-
-
-let getUser = async (id) => {
-    user = await User.findOne({username: barberId});
-    return user
-}
-
-
-
- router.get("/", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
     barberId = "bjackie" //Temp, for testing purposes
-    let barber = await getUser(barberId);
+    let barber = await getUserService.getUser(barberId);
     
     name = barber.username
     bio = barber.bio
