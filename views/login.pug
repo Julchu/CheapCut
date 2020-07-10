@@ -1,5 +1,13 @@
-extends layout
+extend layout
 
 block content
-	h1= title
-	p Welcome to #{title}
+	h1=title
+	p #{about}
+	form(method="GET" action="/register")
+		button Register
+	form(method="POST" action='/login')
+		input#username(type='text', name="username", placeholder="Username")
+		input#password(type='text', name="password", placeholder="Password")
+		br
+
+		button(type="submit") Login
