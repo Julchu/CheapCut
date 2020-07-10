@@ -7,7 +7,7 @@ let router = express.Router();
 
 
 router.get("/", (req, res, next) => {
-	res.render("login", {title: "CheapCut",	about: "A place for new barbers to exchange experience for affordable haircuts"});
+	res.render("login", {title: "Login", about: "A place for new barbers to exchange experience for affordable haircuts"});
 });
 
 router.post("/", async (req, res, next) => {
@@ -16,7 +16,7 @@ router.post("/", async (req, res, next) => {
 	
 	let login = await loginUser(username, password);
 	
-	res.render("login", {title: "CheapCut",	about: "A place for new barbers to exchange experience for affordable haircuts"});
+	res.render("login", {title: "Login", about: "A place for new barbers to exchange experience for affordable haircuts"});
 });
 
 module.exports = router;

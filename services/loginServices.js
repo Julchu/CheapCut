@@ -37,6 +37,10 @@ let createUser = async (username, password, userType) => {
 };
 
 let loginUser = async (username, password) => {
+	if (!username || !password) {
+		console.log("User did not enter a username or password")
+		return false;
+	}
 	let exists = await User.findOne({ username: username});
 	let login = false;
 	if (exists != "") {

@@ -1,13 +1,43 @@
 extend layout
 
-block content
-	h1=title
-	p #{about}
-	form(method="GET" action="/register")
-		button Register
-	form(method="POST" action='/login')
-		input#username(type='text', name="username", placeholder="Username")
-		input#password(type='text', name="password", placeholder="Password")
-		br
+block styles
+	link(rel='stylesheet', href="/stylesheets/login.css")
 
-		button(type="submit") Login
+block content
+	#container.container-fluid
+		.row
+			//- Splitting page into 3 columns to center logins (size is out of 12)
+				Pug id notation: #<idName>
+			//- Left side for register/login button
+			#colLeft.col-2
+				#leftInfoBar.row
+					form(action="/register" method="GET")
+						button.btn.text-nowrap 
+							i.fas.fa-door-open
+							d-none.d-sm-inline  Register
+			//- Middle for login input form
+			#colMid.col-8
+				//- Welcome title
+				#middleInfoBar.row
+
+				//- Input area
+				#input.row
+					form(action="/login" method="POST")
+						.form-group
+							label Login
+							.input-group
+								.input-group-prepend
+									.input-group-text Username
+								input.form-control(type="text", name="username" placeholder="Enter your username")
+						.form-group
+							.input-group
+								.input-group-prepend
+									.input-group-text Password
+								input.form-control(type="password", name="password" placeholder="Enter your password")
+						.form-group
+							button.btn=title 
+								i.fas.fa-door-open
+				//- Middle bottom space placeholder
+				#middleInfoBar.row
+			//- Empty right column
+			#colRight.col-2

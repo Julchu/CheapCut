@@ -1,0 +1,236 @@
+body {
+	height: 100vh;
+	width: 100vw;
+	margin: 0;
+	font-family: "Questrial";
+	/* font-family: "Montserrat"; */
+	/* font-weight: 100; */
+}
+
+#container {
+	background-color: white;
+	padding: 0;
+}
+
+#container .row {
+	margin: 0;
+}
+
+
+#leftCol {
+	height: 100vh;
+	background-color: white;
+}
+
+#leftInfoBar {
+	height: 5%;
+}
+
+#leftInfoBar button {
+	border: 0;
+	font-size: 24px;
+}
+
+/* #leftInfoBar form {
+	height: 100%;
+	width: 100%;
+} */
+
+.roomInfo {
+	height: 47.5%;
+	padding-left: 5%;
+}
+
+.leftTableParent {
+	height: 100%;
+	max-height: inherit;
+	width: 100%;
+}
+
+.leftTableParent.table {
+	/* max-height: 10%; */
+	margin: 0;
+}
+
+.leftTableParent thead,
+.leftTableParent tbody,
+.leftTableParent tr,
+.leftTableParent td,
+.leftTableParent th {
+	display: block; 
+}
+
+.leftTableParent tbody {
+	height: 40vh;
+	overflow-y: auto;
+}
+
+#middleCol {
+	height: 100vh;
+	padding: 0;
+	background-color: rgb(66, 194, 153);
+}
+
+#middleInfoBar {
+	margin: 0;
+	padding: 0;
+	height: 5%;
+	background-color: white;
+	padding-left: 1%;
+	padding-top: 1%;
+}
+
+#messages {
+	height: 90%;
+	width: 100%;
+	margin: 0;
+	background-image: url("../images/Background\ Image.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	overflow-y: auto;
+}
+
+.rightTableParent {
+	width: 100%;
+}
+
+#messageTable {
+	font-size: 24px;
+	max-height: 100%;
+	color: white;
+	margin: 0;
+}
+
+.rightTableParent td:nth-child(1) {  
+	width: 10%;
+}
+
+#sendBar {
+	background-color: white;
+	height: 5%;	
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+#sendBar .inputBar {
+	height: 100%;
+	margin: 0 !important;
+	background-color: black;
+}
+
+.input-group-prepend {
+	width: 100%;
+	background-color: red;
+}
+
+#sendBar button {
+	height: 100%;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+#sendBar .inputBar {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 24px;
+}
+
+#sendBar input {
+	padding: 0;
+	height: 100%;
+}
+
+#rightCol {
+	background-color: rgb(66, 194, 153);
+}
+
+/* Removes border on select of Bootstrap elements */
+input, span, button {
+    box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	border-radius: 0 !important;
+	border-color: white !important;
+	background-color: white;
+	border: 0;
+	padding: 0;
+}
+
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+}
+
+/* Extra notes */
+
+/* font-weights
+ * Thin            100     
+ * Extra Light     200
+ * Light           300
+ * Regular         400
+ * Medium          500
+ * Semi-Bold       600
+ * Bold            700
+ * Black           900
+ */
+
+/* CSS Selectors
+ * .class
+ * #id
+ * div (elements)
+ */
+
+ /* #userTable { */
+	/* margin: 0; */
+	/* height: 100%; */
+	/* width: 50%; */
+	/* overflow: scroll; */
+/* } */
+
+/* #userTable tbody { */
+	/* height: 50%; */
+	/* width: 100%; */
+	/* overflow-y: scroll; */
+	/* box-sizing: content-box; */
+/* } */
+
+/* TODO: table heights */
+/* .scroll-thead{
+    width: 100%;
+    display: inline-table;
+}
+
+.scroll-tbody-y
+{
+    display: block;
+    overflow-y: scroll;
+}
+
+.table-body{
+    height: 100%;
+} */
+
+/* .scrollBar {
+	height: 80%;
+	overflow: auto;
+} */
+
+/* .tableParent { */
+	/* display: block; */
+	/* max-height: 100%; */
+/* } */
