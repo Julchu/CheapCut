@@ -14,12 +14,7 @@ router.post("/", async (req, res, next) => {
 	let username = req.body.username;
 	let password = req.body.password;
 	
-	let user = {
-		username: username,
-		password: password,
-	}
-	
-	let login = await loginUser(user);
+	let login = await loginUser(username, password);
 	
 	res.render("login", {title: "CheapCut",	about: "A place for new barbers to exchange experience for affordable haircuts"});
 });
