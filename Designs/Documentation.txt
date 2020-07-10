@@ -1,0 +1,80 @@
+- General
+	- Database: MongoDB
+	- 
+
+- Login page
+	- Front-end
+		- Has an input box for username and password
+		- Has a submit button to login
+
+	- Back-end
+		- Username
+
+		- Password
+			- Encrypted using bcrypt (not bcrypt.JS)
+		- User sessions:
+			- Purpose: 
+			- Uses Passport.JS
+
+
+- Registration page
+    -Front-end
+        -Has input boxes for username and password
+        -Has options for whether registering customer or barber account
+        -Has submit button to register profile
+    -Back-end
+
+- Barber profile creation page
+    -Front-end
+        -Has input boxes for name, experience, location, contact info, availability, and a bio
+        -Has input for photos to be added, examples of work
+        -Has submit button to finish profile creation
+    -Back-end
+
+- Search page
+    -Front-end 
+        -Has input for location
+        -Has a submit button to search 
+        -Has option to filter by distance (ex. only within x km)
+    -Back-end
+
+- Results page
+    -Front-end
+        -Scrolling list of barber profiles
+            -Profiles show pictures, name, next available appointment, and contact info/address
+        -Sort by drop down
+            -sort by location, reviews, next availability, or price range
+        -Click on barber to open their barber page
+        -Option to view in map view instead of list view
+
+    -Back-end
+
+- Barber page
+    -Front-end 
+        -Barber name, location, price range, photos, contact info, and reviews
+        -Input box for reviews
+        -Links to socials
+        -Button to book an appointment
+    -Back-end
+
+- Book an Appointment page
+    -Front-end
+        -Calendar in week view
+            -Arrow buttons to switch weeks
+        -Each day has a column of time slots from open-close
+        -Open time slots are white, taken are greyed/blacked out
+        -Click to select slot
+        -Button to book appointment
+    -Back-end
+
+- Database
+	- Users
+		- Generic
+			- Username
+			- Date joined
+			- Contact info
+		- Barber
+			- Bio
+			- Social media links
+		- Customer
+			- 
