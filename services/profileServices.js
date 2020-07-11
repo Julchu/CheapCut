@@ -24,7 +24,7 @@ let getCustomerInfo = async (username) => {
 let setUserRating = async (username, rating) => {
 	let user = await User.findOne({username: username});
 	if (user.rating) {
-		// rating = (user.rating + rating) / user.
+		// user.rating = ((rating + user.rating * user.pastApt.length) / user.pastApt.length + 1)
 		console.log("Updating user " + username + " rating to: " + rating);
 	} else {
 		console.log("Setting user " + username + " rating to: " + rating);
@@ -34,6 +34,11 @@ let setUserRating = async (username, rating) => {
 	await user.save();
 }
 
+let setUsername = async (username, newUsername) => {
+	let user = await User.findOne({username: username});
+	user.username = newUsername;
+	await user.save();
+}
 
 
 module.exports = {getCustomerInfo, setUserRating};
