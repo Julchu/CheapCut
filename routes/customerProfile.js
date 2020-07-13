@@ -18,5 +18,4 @@ router.post("/", async (req, res, next) => {
 	// res.render('customerProfile', { customerName: customerInfo.username, userType: customerInfo.userType, userRating: customerInfo.userRating});
 });
 
-
 module.exports = router;
