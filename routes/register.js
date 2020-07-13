@@ -6,7 +6,11 @@ let express = require("express");
 let router = express.Router();
 
 router.get("/", (req, res, next) => {
-	res.render("register", {title: "CheapCut",	about: "A place for new barbers to exchange experience for affordable haircuts"});
+	if (req.isAuthenticated()) {
+		res.redirect('/successPlaceholder');
+	} else {
+		res.render("register", { title: "CheapCut",	about: "Register an account" });
+	}
 });
 
 router.post("/", async (req, res, next) => {

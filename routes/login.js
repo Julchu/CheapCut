@@ -1,22 +1,27 @@
 "use strict";
 
-let loginUser = require("../services/loginServices").loginUser;
-
 let express = require("express");
 let router = express.Router();
+let passport = require('passport');
 
-
-router.get("/", (req, res, next) => {
-	res.render("login", {title: "Login", about: "A place for new barbers to exchange experience for affordable haircuts"});
+router.get("/login", (req, res, next) => {
+	// If user is already logged in, redirect to chat page
+	if (req.isAuthenticated()) {
+		res.redirect('/successPlaceholder');
+	} else {
+		res.render("login", { title: "Login", about: "A place for new barbers to exchange experience for affordable haircuts" });
+	}
 });
 
-router.post("/", async (req, res, next) => {
-	let username = req.body.username;
-	let password = req.body.password;
-	
-	let login = await loginUser(username, password);
-	
-	res.render("login", {title: "Login", about: "A place for new barbers to exchange experience for affordable haircuts"});
+// Login logic, validates credentials with database using Passport.js (login Strategy in appJS)
+router.post('/login', passport.authenticate('local', { failureRedirect: '/login'}), (req, res, next) => { // , successRedirect: "/chat" 
+	res.redirect("/successPlaceholder");
+});
+
+// Logout must be in the same router as login, otherwise redirection tries to fetch (GET) a /logout page
+router.post('/logout', (req, res, next) => {
+	req.logout();
+	res.redirect('/login');
 });
 
 module.exports = router;
