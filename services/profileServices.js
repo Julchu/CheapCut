@@ -13,6 +13,7 @@ let getCustomerInfo = async (username) => {
 	let customerInfo;
     if (customer != "") {
 		customerInfo = {
+			userId: customer.id,
 			username: customer.username,
             userType: customer.userType,
             userRating: customer.rating

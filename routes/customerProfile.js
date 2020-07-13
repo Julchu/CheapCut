@@ -7,7 +7,7 @@ let setUserRating = require('../services/profileServices').setUserRating;
 
 router.get('/', async (req, res, next) => {
 	let customerInfo = await getCustomerInfo('admin')
-	res.render('customerProfile', { customerName: customerInfo.username, userType: customerInfo.userType, userRating: customerInfo.userRating});
+	res.render('customerProfile', { customerId: customerInfo.userId, customerName: customerInfo.username, userType: customerInfo.userType, userRating: customerInfo.userRating});
 });
 
 router.post("/", async (req, res, next) => {
