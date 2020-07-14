@@ -9,7 +9,7 @@ let session = require('express-session');
 
 // Project files
 let User = require("./models/Users").User;
-let bcryptService = require("./services/bcryptService");
+let bcryptServices = require("./services/bcryptServices");
 let databaseServices = require("./services/databaseServices");
 
 // Routers
@@ -36,7 +36,7 @@ passport.use(new Strategy(
 			}
 
 			// Returns true if password matches encrypted password
-			if (await bcryptService.compare(password, user.password)) {
+			if (await bcryptServices.compare(password, user.password)) {
 				return done(null, user, {message: "User credentials correct."});
 			}
 

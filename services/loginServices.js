@@ -3,7 +3,7 @@
 let Barber = require('../models/Users').Barber;
 let Customer = require('../models/Users').Customer;
 let User = require('../models/Users').User;
-let bcryptService = require("./bcryptService");
+let bcryptServices = require("./bcryptServices");
 
 let createUser = async (username, password, userType) => {
 	let register = false;
@@ -16,7 +16,7 @@ let createUser = async (username, password, userType) => {
 		if (exists == "") {
 			// If username doesn't exist, check datatype to create specific user type (barber, customer)
 			console.log("Trying to create user");
-			let encryptedPassword = await bcryptService.encrypt(password);
+			let encryptedPassword = await bcryptServices.encrypt(password);
 	
 			let newUser;
 			if (userType === "barber") {

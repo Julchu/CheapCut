@@ -1,7 +1,7 @@
 "use strict";
 
 let User = require('../models/Users').User;
-let bcryptService = require("./bcryptService");
+let bcryptServices = require("./bcryptServices");
 
 let getCustomerInfo = async (username) => {
 	let customer = await User.findOne({username: username});
@@ -44,7 +44,7 @@ let setUsername = async (username, newUsername) => {
 
 let setPassword = async (username, newPassword) => {
 	let user = await User.findOne({username: username});
-	let encryptedPassword = await bcryptService.encrypt(newPassword);
+	let encryptedPassword = await bcryptServices.encrypt(newPassword);
 	user.password = encryptedPassword;
 	await user.save();
 }

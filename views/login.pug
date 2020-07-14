@@ -9,17 +9,17 @@ block content
 			//- Splitting page into 3 columns to center logins (size is out of 12)
 				Pug id notation: #<idName>
 			//- Left side for register/login button
-			#colLeft.col-2
+			#leftCol.col-2
 				#leftInfoBar.row
 					form(action="/register" method="GET")
 						button.btn.text-nowrap 
 							i.fas.fa-door-open
 							d-none.d-sm-inline  Register
 			//- Middle for login input form
-			#colMid.col-8
+			#middleCol.col-8
 				//- Welcome title
 				#middleInfoBar.row
-
+					h1.text-nowrap=about
 				//- Input area
 				#input.row
 					form(action="/login" method="POST")
@@ -40,4 +40,4 @@ block content
 				//- Middle bottom space placeholder
 				#middleInfoBar.row
 			//- Empty right column
-			#colRight.col-2
+			#rightCol.col-2
