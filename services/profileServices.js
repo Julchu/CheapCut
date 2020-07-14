@@ -3,8 +3,8 @@
 let User = require('../models/Users').User;
 let bcryptServices = require("./bcryptServices");
 
-let getCustomerInfo = async (username) => {
-	let customer = await User.findOne({username: username});
+let getCustomerInfo = async (profileId) => {
+	let customer = await User.findOne({profileId: profileId});
 	if (customer.rating) {
 		console.log("Rating");
 	} else {
@@ -49,4 +49,9 @@ let setPassword = async (username, newPassword) => {
 	await user.save();
 }
 
-module.exports = {getCustomerInfo, setUserRating};
+let getUserInfo = async (id) => {
+    let user = await User.findOne({profileId: id});
+    return user;
+}
+
+module.exports = {getCustomerInfo, setUserRating, getUserInfo};
