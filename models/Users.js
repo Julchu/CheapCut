@@ -38,6 +38,9 @@ var userSchema = new mongoose.Schema({
 	// Dictionary of user's ratings description of other people (to give a reason for a rating (contestable))
 	userRatingsDesc: {type: Map, of: String},
 
+	// Dictionary of user's ratings description of other people (to give a reason for a rating (contestable))
+	bio: {type: String, default: "No Bio Yet"},
+
 	// TODO: upcoming (singular) appointment and list of past appointments: {reference appointment database object};
 	upcomingApt: {type: mongoose.Schema.Types.ObjectId, ref: 'Appointments'},
 	pastApt: [{type: mongoose.Schema.Types.ObjectId, ref: 'Appointments'}]

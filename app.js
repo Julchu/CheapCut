@@ -20,6 +20,7 @@ let registerRouter = require('./routes/register');
 let customerProfileRouter = require('./routes/customerProfile');
 let successPlaceholderRouter = require('./routes/successPlaceholder');
 let testAppointmentRouter = require('./routes/testAppointment');
+let barberProfileRouter = require('./routes/barberProfile');
 
 let app = express();
 
@@ -85,6 +86,7 @@ app.use('/testAppointment', testAppointmentRouter);
 
 // Temporary successful login placeholder
 app.use('/successPlaceholder', successPlaceholderRouter);
+app.use('/barberProfile', barberProfileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
