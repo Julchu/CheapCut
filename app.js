@@ -77,7 +77,7 @@ app.use('/', indexRouter);
 
 // /login and /logout request paths exist within router rather than in app.js, to keep login and logout together
 app.use('/', loginRouter);
-// app.use('/users', usersRouter);
+app.use('/users', usersRouter);
 app.use('/register', registerRouter);
 app.use('/customerprofile', customerProfileRouter);
 
