@@ -9,12 +9,12 @@ router.get("/login", (req, res, next) => {
 	if (req.isAuthenticated()) {
 		res.redirect('/successPlaceholder');
 	} else {
-		res.render("login", { title: "Login", about: "A place for new barbers to exchange experience for affordable haircuts" });
+		res.render("login", { title: "Login", about: "Login to your account" });
 	}
 });
 
 // Login logic, validates credentials with database using Passport.js (login Strategy in appJS)
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login'}), (req, res, next) => { // , successRedirect: "/chat" 
+router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true}), (req, res, next) => { // , successRedirect: "/chat" 
 	res.redirect("/successPlaceholder");
 });
 

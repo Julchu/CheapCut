@@ -17,10 +17,13 @@ router.post("/", async (req, res, next) => {
 	let username = req.body.username;
 	let password = req.body.password;
 	let userType = req.body.userType;
-	
-	let register = await createUser(username, password, userType);
-	
-	res.redirect("/login");
+
+	let response = await createUser(username, password, userType);
+	if (response === "200") {
+		res.redirect("/login");
+	} else {
+		res.render("register", { title: "CheapCut",	about: "Register an account", error: response });
+	}
 });
 
 module.exports = router;

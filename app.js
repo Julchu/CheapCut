@@ -19,6 +19,7 @@ let loginRouter = require('./routes/login');
 let registerRouter = require('./routes/register');
 let customerProfileRouter = require('./routes/customerProfile');
 let successPlaceholderRouter = require('./routes/successPlaceholder');
+let testAppointmentRouter = require('./routes/testAppointment');
 
 let app = express();
 
@@ -80,6 +81,7 @@ app.use('/', loginRouter);
 app.use('/users', usersRouter);
 app.use('/register', registerRouter);
 app.use('/customerprofile', customerProfileRouter);
+app.use('/testAppointment', testAppointmentRouter);
 
 // Temporary successful login placeholder
 app.use('/successPlaceholder', successPlaceholderRouter);

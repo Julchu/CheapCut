@@ -1,5 +1,5 @@
 extend layout
-
+	
 block styles
 	link(rel='stylesheet', href="/stylesheets/login.css")
 
@@ -24,7 +24,7 @@ block content
 				#input.row
 					form(action="/login" method="POST")
 						.form-group
-							label Login
+							label 
 							.input-group
 								.input-group-prepend
 									.input-group-text Username
@@ -34,6 +34,7 @@ block content
 								.input-group-prepend
 									.input-group-text Password
 								input.form-control(type="password", name="password" placeholder="Enter your password")
+						br
 						.form-group
 							button.btn=title 
 								i.fas.fa-door-open

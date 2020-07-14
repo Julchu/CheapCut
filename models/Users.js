@@ -15,6 +15,8 @@ var userSchema = new mongoose.Schema({
 	// TODO: encrypt password with BCrypt
 	password: {type: String, required: true},
 
+	profileId: {type: String},
+
 	// User's join date
 	joinDate: {type: Date, required: true, default: Date.now()},
 	
