@@ -1,8 +1,10 @@
 "use strict";
 
-let express = require("express");
-let router = express.Router();
 let passport = require('passport');
+let express = require("express");
+
+let router = express.Router();
+
 
 router.get("/login", (req, res, next) => {
 	// If user is already logged in, redirect to success placeholder page
@@ -14,7 +16,7 @@ router.get("/login", (req, res, next) => {
 });
 
 // Login logic, validates credentials with database using Passport.js (login Strategy in appJS)
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true}), (req, res, next) => { // , successRedirect: "/chat" 
+router.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), (req, res, next) => { // , successRedirect: "/chat" 
 	res.redirect("/successPlaceholder");
 });
 
