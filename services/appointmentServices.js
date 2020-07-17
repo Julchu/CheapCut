@@ -14,7 +14,6 @@ let createAppointment = async (startTime, endTime, profileId, customerId) => {
 
 	// Test error/response to saving document
 	await appointment.save();
-
 }
 
 module.exports = {createAppointment};

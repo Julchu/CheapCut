@@ -36,10 +36,14 @@ router.get("/:profileId/appointment", (req, res, next) => {
 
 // Create appointment with current logged-in user and selected (viewed) profile
 router.post("/:profileId/appointment", async (req, res, next) => {
+	console.log(req.user.userType);
 	if (req.isAuthenticated()) {
-		let response = await createAppointment(req.body.startTime, req.body.endTime, req.params.profileId, req.user.id);
-		res.status(response);
-		res.redirect("/appointment/" + req.params.profileId);
+		let appointment = await createAppointment(req.body.startTime, req.body.endTime, req.params.profileId, req.user.id);
+		
+		// res.status(response);
+		res.redirect("/barberprofile/" + req.params.profileId);
+
+		// TODO: redirect to successful appointment page
 	} else {
 		res.redirect("/login");
 	}
