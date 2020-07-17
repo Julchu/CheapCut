@@ -1,17 +1,20 @@
 "use strict";
 
+let getUserId = require("./profileServices").getUserId;
+let Appointment = require("../models/Appointments").Appointment;
 
+let createAppointment = async (startTime, endTime, profileId, customerId) => {
+	let barberId = await getUserId(profileId);
+	let appointment = new Appointment({
+		startTime: startTime,
+		endTime: endTime,
+		barber: barberId,
+		customer: customerId
+	});
 
-let name = "Name not Found";
-let bio = "Bio not Found";
-let contactInfo = "Contact info not found";
-let ratingNum = "Rating not found";
+	// Test error/response to saving document
+	await appointment.save();
 
-let barber = await profileServices.getUserInfo(barberId);
-
-if (barber) {
-	name = barber.username;
-	bio = barber.bio;
-	contactInfo = barber.contactInfo;
-	ratingNum = barber.rating;
 }
+
+module.exports = {createAppointment};

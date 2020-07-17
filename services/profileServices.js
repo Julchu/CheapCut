@@ -5,7 +5,7 @@ let bcryptServices = require("./bcryptServices");
 
 let getUserId = async (profileId) => {
 	let userId = await User.findOne({profileId: profileId});
-	// TODO edge cast catching
+	// TODO edge case catching
 	return userId;
 };
 
@@ -40,17 +40,34 @@ let setUserRating = async (username, rating) => {
 	await user.save();
 };
 
-let setUsername = async (username, newUsername) => {
+// TODO: validate proper user, and validate new username isn't taken
+let setUsername = async (username, profileId) => {
+	let response = "";
 	let user = await User.findOne({username: username});
-	user.username = newUsername;
-	await user.save();
+	if (user) {
+		let exists = await User.findOne({profileId: profileId});
+		if (!exists) {
+			user.username = newUsername;
+			await user.save();
+		} else {
+			response = "Username already exists";
+		}
+	} else {
+		response = "User not found";
+	}
+	return response;
 };
 
 let setPassword = async (username, newPassword) => {
 	let user = await User.findOne({username: username});
-	let encryptedPassword = await bcryptServices.encrypt(newPassword);
-	user.password = encryptedPassword;
-	await user.save();
+
+	if (user) {			
+		let encryptedPassword = await bcryptServices.encrypt(newPassword);
+		user.password = encryptedPassword;
+		await user.save();
+	} else {
+		response = "User not found";
+	}
 };
 
 let getUserInfo = async (id) => {
@@ -73,4 +90,4 @@ let getUserInfo = async (id) => {
     return data;
 };
 
-module.exports = {getCustomerInfo, setUserRating, getUserInfo, getUserId};
+module.exports = {getCustomerInfo, setUserRating, getUserInfo, getUserId, setPassword};

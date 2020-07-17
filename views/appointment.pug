@@ -1,0 +1,17 @@
+extend layout
+
+block content
+	form(method="POST")
+		//- input(type="time", name="startTime")
+		//- input(type="time", name="startTime")
+		//- input(type="date", name="date")
+
+		.form-group.row
+			label.col-2.col-form-label(for='date') Date
+			.col-10
+				input#date.form-control(type='date', value='2011-08-19')
+		.form-group.row
+			label.col-2.col-form-label(for='time') Time
+			.col-10
+				input#time.form-control(type='time', value='13:45:00')
+		button Submit

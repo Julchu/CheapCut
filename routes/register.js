@@ -19,7 +19,8 @@ router.post("/", async (req, res, next) => {
 	let userType = req.body.userType;
 
 	let response = await createUser(username, password, userType);
-	if (response === "200") {
+	console.log(response);
+	if (response === "") {
 		res.redirect("/login");
 	} else {
 		res.render("register", { title: "CheapCut",	about: "Register an account", error: response });
