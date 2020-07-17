@@ -1,13 +1,114 @@
 extend layout
 
 block content
+	table.table.table-bordered.table-hover
+		thead.thead-dark
+			tr
+				th(scope="col") Time
+				th(scope="col") Sunday
+				th(scope="col") Monday
+				th(scope="col") Tuesday
+				th(scope="col") Wednesday
+				th(scope="col") Thursday
+				th(scope="col") Friday
+				th(scope="col") Saturday
+		tr
+			th(scope="row") 9:00
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 9:30
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 10:00
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 10:30
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 11:00
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 11:30
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 12:00
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 12:30
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 1:00
+			th
+			th
+			th
+			th
+			th
+			th
+			th
 	form(method="POST")
 		.form-group.row
 			label.col-2.col-form-label(for='date') Date
-			.col-10
-				input#date.form-control(type='date', value='2011-08-19')
+			.col-2
+				label(for='sel1') Select list:
+					select#sel1.form-control
+						option 1
+						option 2
+						option 3
+						option 4
+
 		.form-group.row
 			label.col-2.col-form-label(for='time') Time
 			.col-10
 				input#time.form-control(type='time', value='13:45:00')
-		button Submit
+		.form-group.row
+			button.btn.btn-primary Save
+
+	
