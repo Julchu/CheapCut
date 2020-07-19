@@ -19,7 +19,7 @@ block content
 	|bio: 
 	p #{about}
 
-	form(action="/barberProfile/" + profileId, method="POST")
+	form(action="/barberProfile/" + profileId + "/appointment", method="GET")
 		button() Book an appointment
 
 	

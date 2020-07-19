@@ -26,9 +26,11 @@ router.get("/:profileId", async (req, res, next) => {
 	res.render("barberProfile", {title: user.username, about: user.bio, contact: user.contactInfo, rating: user.rating, profileId: user.profileId});
 });
 
-router.post("/:profileId", async (req, res, next) => {
-	res.redirect("/barberProfile/" +  req.params.profileId + "/appointment");
-});
+/* Unnecessary when FE form can be set to GET request with action="profileId"/appointment/ */
+
+// router.post("/:profileId", async (req, res, next) => {
+// 	res.redirect("/barberProfile/" +  req.params.profileId + "/appointment");
+// });
 
 // Test Appointment dashboard
 router.get("/:profileId/appointment", async (req, res, next) => {
