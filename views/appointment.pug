@@ -95,11 +95,10 @@ block content
 			th
 			th
 			th
-	form(method="POST")
+	form(action="/barberProfile/" + profileId + "/appointment", method="POST")
 		.form-group.row
 			label.col-2.col-form-label(for='daySelect') Date
 			.col-10
-				label(for='daySelect') Select day:
 				select#daySelect.form-control(name="daySelect")
 					option(value="Sunday") Sunday
 					option(value="Monday") Monday
@@ -111,10 +110,9 @@ block content
 		.form-group.row
 			label.col-2.col-form-label(for='appointmentInput') Time
 			.col-10
-				label(for='timeSelect') Select day:
 				select#timeSelect.form-control(name="timeSelect")
-					option(value="9:00") 9:00 AM
-					option(value="9:30") 9:30 AM
+					option(value="09:00") 9:00 AM
+					option(value="09:30") 9:30 AM
 					option(value="10:00") 10:00 AM
 					option(value="10:30") 10:30 AM
 					option(value="11:00") 11:00 AM
@@ -123,6 +121,11 @@ block content
 					option(value="12:30") 12:30 PM
 					option(value="13:00") 1:00 PM
 		.form-group.row
-			button.btn.btn-primary Save
+			.col-10
+				button.btn.btn-primary Save
+	form(action="/barberProfile/" + profileId, method="GET")
+		.form-group.row
+			.col-10
+				button.btn.btn-outline-primary Cancel
 
 	

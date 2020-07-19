@@ -18,6 +18,8 @@ let createAppointment = async (startTime, endTime, profileId, customerId) => {
 			customer: customerId
 		});
 
+		// TODO: update corresponding users' appointments
+
 		// Test error/response to saving document
 		// await appointment.save();
 	} else {
