@@ -1,6 +1,6 @@
 "use strict";
 
-let getUserInfo = require("../services/profileServices").getUserInfo;
+let profileServices = require("../services/profileServices");
 let createAppointment = require("../services/appointmentServices").createAppointment;
 
 let express = require("express");
@@ -20,15 +20,25 @@ router.get("/:profileId", async (req, res, next) => {
 		res.redirect("/login");
 	}
 	
-	let data = await getUserInfo(req.params.profileId);
+	// let data = await profileServices.getUserInfo(req.params.profileId);
+	let user = await profileServices.getUser(req.params.profileId);
 
-	res.render("barberProfile", {title: data.name, about: data.bio, contact: data.contactInfo, rating: data.ratingNum});
+	res.render("barberProfile", {title: user.username, about: user.bio, contact: user.contactInfo, rating: user.rating, profileId: user.profileId});
+});
+
+router.post("/:profileId", async (req, res, next) => {
+	res.redirect("/barberProfile/" +  req.params.profileId + "/appointment");
 });
 
 // Test Appointment dashboard
-router.get("/:profileId/appointment", (req, res, next) => {
+router.get("/:profileId/appointment", async (req, res, next) => {
 	if (req.isAuthenticated()) {
-		res.render("appointment");
+		let userType = await profileServices.getUserType(req.params.profileId);
+		if (userType === "barber") {
+			res.render("appointment", { title: "Book an appointment", about: "Choose a timeslot with ", profileId: req.params.profileId });
+		} else {
+			res.redirect("/barberProfile/" +  req.params.profileId);
+		}
 	} else {
 		res.redirect("/login");
 	}
@@ -38,7 +48,13 @@ router.get("/:profileId/appointment", (req, res, next) => {
 router.post("/:profileId/appointment", async (req, res, next) => {
 	console.log(req.user.userType);
 	if (req.isAuthenticated()) {
-		let appointment = await createAppointment(req.body.startTime, req.body.endTime, req.params.profileId, req.user.id);
+		// let appointment = await createAppointment(req.body.startTime, req.body.endTime, req.params.profileId, req.user.id);
+		let daySelect = req.body.daySelect;
+		let timeSelect = req.body.timeSelect;
+
+		console.log(daySelect);
+		console.log(timeSelect);
+	
 		
 		// res.status(response);
 		res.redirect("/barberprofile/" + req.params.profileId);

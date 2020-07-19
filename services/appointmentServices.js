@@ -19,7 +19,7 @@ let createAppointment = async (startTime, endTime, profileId, customerId) => {
 		});
 
 		// Test error/response to saving document
-		await appointment.save();
+		// await appointment.save();
 	} else {
 		response = "Appointment not created"
 	}

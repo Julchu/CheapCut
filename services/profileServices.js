@@ -3,14 +3,45 @@
 let User = require('../models/Users').User;
 let bcryptServices = require("./bcryptServices");
 
+let getUser = async (profileId) => {
+	let user = await User.findOne({profileId: profileId});
+	return user;
+}
+
 let getUserId = async (profileId) => {
-	let userId = await User.findOne({profileId: profileId});
-	// TODO edge case catching
-	return userId;
+	let user = await getUser(profileId);
+	return user._id;
+};
+
+let getUserType = async (profileId) => {
+	let user = await getUser(profileId);
+	return user.userType;
+}
+
+let getUserInfo = async (profileId) => {
+	let data = {
+		name: "Name not Found",
+		bio: "Bio not Found",
+		contactInfo: "Contact info not found",
+		ratingNum: "Rating not found",
+		userType: "Customer"
+	}
+
+	let user = await getUser(profileId);
+	
+	if (user) {
+		data.name = user.username;
+		data.bio = user.bio;
+		data.contactInfo = user.contactInfo;
+		data.ratingNum = user.rating;
+		data.userType = user.userType;
+	}
+
+    return data;
 };
 
 let getCustomerInfo = async (profileId) => {
-	let customer = await User.findOne({profileId: profileId});
+	let customer = await getUser(profileId);
 	if (customer.rating) {
 		console.log("Rating");
 	} else {
@@ -70,24 +101,7 @@ let setPassword = async (username, newPassword) => {
 	}
 };
 
-let getUserInfo = async (id) => {
-	let data = {
-		name: "Name not Found",
-		bio: "Bio not Found",
-		contactInfo: "Contact info not found",
-		ratingNum: "Rating not found"
-	}
-
-	let user = await User.findOne({profileId: id});
-	
-	if (user) {
-		data.name = user.username;
-		data.bio = user.bio;
-		data.contactInfo = user.contactInfo;
-		data.ratingNum = user.rating;
-	}
-
-    return data;
+module.exports = {
+	getUser, getCustomerInfo, getUserInfo, getUserId, getUserType,
+	setUserRating, setUsername, setPassword
 };
-
-module.exports = {getCustomerInfo, setUserRating, getUserInfo, getUserId, setPassword};

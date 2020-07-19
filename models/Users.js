@@ -15,6 +15,7 @@ var userSchema = new mongoose.Schema({
 	// TODO: encrypt password with BCrypt
 	password: {type: String, required: true},
 
+	// Username (unique identifier when people search)
 	profileId: {type: String},
 
 	// User's join date
@@ -38,9 +39,6 @@ var userSchema = new mongoose.Schema({
 	// Dictionary of user's ratings description of other people (to give a reason for a rating (contestable))
 	userRatingsDesc: {type: Map, of: String},
 
-	// Dictionary of user's ratings description of other people (to give a reason for a rating (contestable))
-	bio: {type: String, default: "No Bio Yet"},
-
 	// TODO: upcoming (singular) appointment and list of past appointments: {reference appointment database object};
 	upcomingApt: {type: mongoose.Schema.Types.ObjectId, ref: 'Appointments'},
 	pastApt: [{type: mongoose.Schema.Types.ObjectId, ref: 'Appointments'}]
@@ -57,6 +55,8 @@ let User = mongoose.model("User", userSchema, "Users");
 let barberSchema = new mongoose.Schema({
 	// Address is information is only required by barbers
 	address: {type: String},
+
+	bio: {type: String, default: "No Bio Yet"},
 
 	// TODO: differentiate/allocate between different social media platforms
 	socialMedia: [{type: String}]

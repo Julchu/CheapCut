@@ -47,7 +47,7 @@ body {
 	height: 90%;
 	width: 100%;
 	margin: 0;
-	background-image: url("../images/Background\ Image.png");
+	/* background-image: url("../images/Background\ Image.png"); */
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;

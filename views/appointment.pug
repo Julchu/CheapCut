@@ -1,6 +1,8 @@
 extend layout
 
 block content
+	h1= title
+	p #{about} #{profileId}
 	table.table.table-bordered.table-hover
 		thead.thead-dark
 			tr
@@ -95,19 +97,31 @@ block content
 			th
 	form(method="POST")
 		.form-group.row
-			label.col-2.col-form-label(for='date') Date
-			.col-2
-				label(for='sel1') Select list:
-					select#sel1.form-control
-						option 1
-						option 2
-						option 3
-						option 4
-
-		.form-group.row
-			label.col-2.col-form-label(for='time') Time
+			label.col-2.col-form-label(for='daySelect') Date
 			.col-10
-				input#time.form-control(type='time', value='13:45:00')
+				label(for='daySelect') Select day:
+				select#daySelect.form-control(name="daySelect")
+					option(value="Sunday") Sunday
+					option(value="Monday") Monday
+					option(value="Tuesday") Tuesday
+					option(value="Wednesday") Wednesday
+					option(value="Thusday") Thusday
+					option(value="Friday") Friday
+					option(value="Saturday") Saturday
+		.form-group.row
+			label.col-2.col-form-label(for='appointmentInput') Time
+			.col-10
+				label(for='timeSelect') Select day:
+				select#timeSelect.form-control(name="timeSelect")
+					option(value="9:00") 9:00 AM
+					option(value="9:30") 9:30 AM
+					option(value="10:00") 10:00 AM
+					option(value="10:30") 10:30 AM
+					option(value="11:00") 11:00 AM
+					option(value="11:30") 11:30 AM
+					option(value="12:00") 12:00 PM
+					option(value="12:30") 12:30 PM
+					option(value="13:00") 1:00 PM
 		.form-group.row
 			button.btn.btn-primary Save
 

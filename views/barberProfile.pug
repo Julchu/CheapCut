@@ -1,11 +1,11 @@
 extend layout
 
 block content
-	h1=title
+	h1=profileId
 	br
 	
 	|rating:
-	h2=rating
+	h2=profileId
 	br
 	
 	|contact info:
@@ -18,5 +18,8 @@ block content
 	
 	|bio: 
 	p #{about}
+
+	form(action="/barberProfile/" + profileId, method="POST")
+		button() Book an appointment
 
 	
