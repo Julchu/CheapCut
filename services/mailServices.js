@@ -1,5 +1,7 @@
 "use strict";
 const nodemailer = require("nodemailer");
+let getUserEmail = require('../services/profileServices').getUserEmail;
+let User = require('../models/Users').User;
 
 // async..await is not allowed in global scope, must use a wrapper
 async function main() {
@@ -17,11 +19,13 @@ async function main() {
 			pass: testAccount.pass, // generated ethereal password
 		},
 	});
+	let profileId = "admin"
+	let email = await getUserEmail(profileId)
 
 	// send mail with defined transport object
 	let info = await transporter.sendMail({
 		from: '"Fred Foo 👻" <foo@example.com>', // sender address
-		to: "bar@example.com, baz@example.com", // list of receivers
+		to: email, // list of receivers
 		subject: "Hello ✔", // Subject line
 		text: "Hello world?", // plain text body
 		html: "<b>Hello world?</b>", // html body
@@ -35,4 +39,4 @@ async function main() {
 	// Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
 
-main().catch(console.error);
+module.exports = {main}
