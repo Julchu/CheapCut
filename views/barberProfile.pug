@@ -1,0 +1,26 @@
+extend layout
+
+block content
+	h1=profileId
+	br
+	
+	|rating:
+	h2=profileId
+	br
+	
+	|contact info:
+	h6=contactInfo
+	br
+
+	block content
+		//- img.className#IdName(src="../routes/placeholder.png" alt="Placeholder Image")
+	br
+	
+	|bio: 
+	p #{about}
+
+	form(action="/barberProfile/" + profileId + "/appointment", method="GET")
+		.form-group.row
+			button.btn.btn-primary Book an appointment
+
+	

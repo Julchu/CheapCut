@@ -1,0 +1,131 @@
+extend layout
+
+block content
+	h1= title
+	p #{about} #{profileId}
+	table.table.table-bordered.table-hover
+		thead.thead-dark
+			tr
+				th(scope="col") Time
+				th(scope="col") Sunday
+				th(scope="col") Monday
+				th(scope="col") Tuesday
+				th(scope="col") Wednesday
+				th(scope="col") Thursday
+				th(scope="col") Friday
+				th(scope="col") Saturday
+		tr
+			th(scope="row") 9:00
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 9:30
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 10:00
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 10:30
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 11:00
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 11:30
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 12:00
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 12:30
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+		tr
+			th(scope="row") 1:00
+			th
+			th
+			th
+			th
+			th
+			th
+			th
+	form(action="/barberProfile/" + profileId + "/appointment", method="POST")
+		.form-group.row
+			label.col-2.col-form-label(for='daySelect') Date
+			.col-10
+				select#daySelect.form-control(name="daySelect")
+					option(value="Sunday") Sunday
+					option(value="Monday") Monday
+					option(value="Tuesday") Tuesday
+					option(value="Wednesday") Wednesday
+					option(value="Thusday") Thusday
+					option(value="Friday") Friday
+					option(value="Saturday") Saturday
+		.form-group.row
+			label.col-2.col-form-label(for='appointmentInput') Time
+			.col-10
+				select#timeSelect.form-control(name="timeSelect")
+					option(value="09:00") 9:00 AM
+					option(value="09:30") 9:30 AM
+					option(value="10:00") 10:00 AM
+					option(value="10:30") 10:30 AM
+					option(value="11:00") 11:00 AM
+					option(value="11:30") 11:30 AM
+					option(value="12:00") 12:00 PM
+					option(value="12:30") 12:30 PM
+					option(value="13:00") 1:00 PM
+		.form-group.row
+			.col-10
+				button.btn.btn-primary Save
+	form(action="/barberProfile/" + profileId, method="GET")
+		.form-group.row
+			.col-10
+				button.btn.btn-outline-primary Cancel
+
+	

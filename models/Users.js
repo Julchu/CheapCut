@@ -15,6 +15,9 @@ var userSchema = new mongoose.Schema({
 	// TODO: encrypt password with BCrypt
 	password: {type: String, required: true},
 
+	// Username (unique identifier when people search)
+	profileId: {type: String},
+
 	// User's join date
 	joinDate: {type: Date, required: true, default: Date.now()},
 	
@@ -52,6 +55,8 @@ let User = mongoose.model("User", userSchema, "Users");
 let barberSchema = new mongoose.Schema({
 	// Address is information is only required by barbers
 	address: {type: String},
+
+	bio: {type: String, default: "No Bio Yet"},
 
 	// TODO: differentiate/allocate between different social media platforms
 	socialMedia: [{type: String}]

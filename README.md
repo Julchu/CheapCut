@@ -92,4 +92,5 @@ CheapCut is a web app to find affordable local haircuts in exchange for new barb
 
 **Template project code**
 -- https://github.com/Julchu/TeaWork
+-- https://github.com/JuliusFan/CP476-Project
 

@@ -3,53 +3,51 @@
 let Barber = require('../models/Users').Barber;
 let Customer = require('../models/Users').Customer;
 let User = require('../models/Users').User;
-let bcryptService = require("./bcryptService");
+let bcryptServices = require("./bcryptServices");
 
 let createUser = async (username, password, userType) => {
-	let register = false;
+	let response = "";
+
 	/* 	Checks if barber's username exists in database
 		If barber doesn't exist, create new barber object and save it to database
 	*/
-	let exists = await User.find({ username: username });
-	// If username doesn't exist, check datatype to create specific user type (barber, customer)
-	if (exists == "") {
+	if (username && password && (userType==="customer" || userType === "barber")) {
+		let exists = await User.find({ username: username });
 		// If username doesn't exist, check datatype to create specific user type (barber, customer)
-		console.log("Trying to create user");
-		let encryptedPassword = await bcryptService.encrypt(password);
+		if (exists == "") {
+			// If username doesn't exist, check datatype to create specific user type (barber, customer)
+			console.log("Trying to create user");
+			let encryptedPassword = await bcryptServices.encrypt(password);
+	
+			// Setting type of user: barber/customer
+			let newUser;
+			if (userType === "barber") {
+				newUser = new Barber({});			
+			} else if (userType === "customer") {
+				newUser = new Customer({});
+			}
 
-		let newUser;
-		if (userType === "barber") {
-			newUser = new Barber({});			
-		} else if (userType === "customer") {
-			newUser = new Customer({});
+			// Default user attributes
+			newUser.username = username;
+			newUser.password = encryptedPassword;
+			newUser.userType = userType;
+
+			// TODO: error catching
+			await newUser.save();
+
+			// let response = await newUser.save().then(() => {
+			// 	console.log("user created");
+			// 	console.log(response);
+			// }).catch((err) => {
+			// 	console.log(err.msg);
+			// });
+			
+			
+		} else {
+			response = "User already exists";
 		}
-		newUser.username = username;
-		newUser.password = encryptedPassword;
-		newUser.userType = userType;
-		await newUser.save();
-		
-		console.log("User created");
-		register = true;
-	} else {
-		console.log("User already exists");
 	}
-	return register;
+	return response;
 };
 
-let loginUser = async (username, password) => {
-	let exists = await User.findOne({ username: username});
-	let login = false;
-	if (exists != "") {
-		if (await bcryptService.compare(password, exists.password)) {
-			login = true;
-			console.log("User credentials correct")
-		} else {
-			console.log("Incorrect password")
-		}
-	} else {
-		console.log("User does not exist")
-	}
-	return login
-}
-
-module.exports = {createUser, loginUser};
+module.exports = {createUser};

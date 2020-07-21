@@ -5,7 +5,11 @@ let router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render('index', { title: 'Banana' });
+	if (req.isAuthenticated()) {
+		res.render('index', { title: 'CheapCut', about: "A place to find cheap hairstyles in exchange for hairstyle practice" });
+	} else {
+		res.redirect("/login");
+	}
 });
 
 module.exports = router;

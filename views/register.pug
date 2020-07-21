@@ -1,17 +1,65 @@
 extend layout
 
+block styles
+	link(rel='stylesheet', href="/stylesheets/login.css")
+
 block content
-	h1=title
-	p #{about}
-	form(method="get" action="/login")
-		button Login
-	form(method="POST" action='/register')
-		input#username(type='text', name="username", placeholder="Username")
-		input#password(type='text', name="password", placeholder="Password")
-		br
-		input#customer(type='radio', name="userType", value="customer", checked)
-		label(for="customer") Customer
-		input#barber(type='radio', name="userType", value="barber")
-		label(for="barber") Barber
-		br
-		button(type="submit") Register
+	#container.container-fluid
+		// Single page-sized row with 3 columns
+		.row
+			// Empty left column
+			#leftCol.col-2
+				// Back Button Bar
+				#leftInfoBar.row
+					form(action="/login" method="GET")
+						button.btn.text-nowrap 
+							i.fas.fa-door-open
+							d-none.d-sm-inline  Login
+							
+			// Middle 3 rows
+			#middleCol.col-8
+				// Register
+				#middleInfoBar.row
+					h1.text-nowrap=about
+				#input.row
+					form(action='/register' method='POST')
+						.form-group
+							label
+							.input-group
+								.input-group-prepend
+									.input-group-text Username
+								input.form-control(type="text", name="username" placeholder="Enter your username")
+							small.form-text.text-danger= errorUsername
+						.form-group
+							.input-group
+								.input-group-prepend
+									.input-group-text Password
+								input.form-control(type="password", name="password" placeholder="Enter your password")
+							small.form-text.text-danger= errorPassword
+						.form-group
+							.custom-control.custom-radio.custom-control-inline
+								input#customRadioInline1.custom-control-input(type='radio', name='userType', value="customer" checked)
+								label.custom-control-label(for='customRadioInline1') Customer
+							.custom-control.custom-radio.custom-control-inline
+								input#customRadioInline2.custom-control-input(type='radio', name='userType', value="barber")
+								label.custom-control-label(for='customRadioInline2') Barber
+						.form-group
+							button.btn Register 
+								i.fas.fa-sign-in-alt
+						#inputError=error
+
+						//- .btn-group.btn-group-toggle(data-toggle='buttons')
+						//- 	label.btn.btn-secondary.active
+						//- 		input#option1(type='radio', name='options', autocomplete='off', checked='')
+						//- 		|  Active
+						//- 	label.btn.btn-secondary
+						//- 		input#option2(type='radio', name='options', autocomplete='off')
+						//- 		|  Radio
+						//- 	label.btn.btn-secondary
+						//- 		input#option3(type='radio', name='options', autocomplete='off')
+						//- 		|  Radio
+
+				#middleInfoBar.row
+				
+			// Empty right column
+			#rightCol.col-2

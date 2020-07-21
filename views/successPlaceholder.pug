@@ -1,0 +1,9 @@
+extend layout
+
+block content
+	h1=title
+	p #{id}
+	form(action='/logout' method='POST')
+		button.btn.text-nowrap
+			i.fas.fa-angle-left
+			d-none.d-sm-inline  Logout
