@@ -30,7 +30,7 @@ let getUserInfo = async (profileId) => {
 	let user = await getUser(profileId);
 	
 	if (user) {
-		data.name = user.username;
+		data.name = user.email;
 		data.bio = user.bio;
 		data.contactInfo = user.contactInfo;
 		data.ratingNum = user.rating;
@@ -56,7 +56,7 @@ let getCustomerInfo = async (profileId) => {
 	if (customer != "") {
 		customerInfo = {
 			userId: customer.id,
-			username: customer.username,
+			email: customer.email,
 			userType: customer.userType,
 			userRating: customer.rating
 		}
@@ -64,29 +64,29 @@ let getCustomerInfo = async (profileId) => {
 	return customerInfo	
 };
 
-let setUserRating = async (username, rating) => {
-	let user = await User.findOne({username: username});
+let setUserRating = async (email, rating) => {
+	let user = await User.findOne({email: email});
 	if (user.rating) {
 		// user.rating = ((rating + user.rating * user.pastApt.length) / user.pastApt.length + 1)
-		console.log("Updating user " + username + " rating to: " + rating);
+		console.log("Updating user " + email + " rating to: " + rating);
 	} else {
-		console.log("Setting user " + username + " rating to: " + rating);
+		console.log("Setting user " + email + " rating to: " + rating);
 		user.rating = rating;
 	}
 	await user.save();
 };
 
-// TODO: validate proper user, and validate new username isn't taken
-let setUsername = async (username, profileId) => {
+// TODO: validate proper user, and validate new email isn't taken
+let setUsername = async (email, profileId) => {
 	let response = "";
-	let user = await User.findOne({username: username});
+	let user = await User.findOne({email: email});
 	if (user) {
 		let exists = await User.findOne({profileId: profileId});
 		if (!exists) {
-			user.username = newUsername;
+			user.email = newUsername;
 			await user.save();
 		} else {
-			response = "Username already exists";
+			response = "email already exists";
 		}
 	} else {
 		response = "User not found";
@@ -94,8 +94,8 @@ let setUsername = async (username, profileId) => {
 	return response;
 };
 
-let setPassword = async (username, newPassword) => {
-	let user = await User.findOne({username: username});
+let setPassword = async (email, newPassword) => {
+	let user = await User.findOne({email: email});
 
 	if (user) {			
 		let encryptedPassword = await bcryptServices.encrypt(newPassword);

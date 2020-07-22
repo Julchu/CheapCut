@@ -10,7 +10,7 @@ var options = { discriminatorKey: 'Users' };
 /* User base class */
 var userSchema = new mongoose.Schema({
 	// Username: must be unique
-	username: {type: String, required: true},
+	email: {type: String, required: true},
 
 	// TODO: encrypt password with BCrypt
 	password: {type: String, required: true},
@@ -25,7 +25,7 @@ var userSchema = new mongoose.Schema({
 	userType: {type: String, required: true, enum: ['customer', 'barber']},
 
 	// TODO: validate phone number (REGEX?)
-	phone: {type: Number, required: true},
+	phone: {type: Number},
 
 	// TODO: validate email
 	email: {type: String},

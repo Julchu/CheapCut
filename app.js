@@ -26,8 +26,8 @@ let app = express();
 
 // User authentication validation
 passport.use(new Strategy(
-	(username, password, done) => {
-		User.findOne({ username: username }, async (err, user) => {
+	(email, password, done) => {
+		User.findOne({ email: email }, async (err, user) => {
 			if (err) { 
 				return done(err);
 			}
@@ -50,11 +50,11 @@ passport.use(new Strategy(
 
 // Serializing/deserializing for persistant user sessions
 passport.serializeUser(function(user, cb) {
-	cb(null, user.username);
+	cb(null, user.email);
 });
   
-passport.deserializeUser(function(username, cb) {
-	User.findOne({ username: username }, function (err, user) {
+passport.deserializeUser(function(email, cb) {
+	User.findOne({ email: email }, function (err, user) {
 		if (err) { return cb(err); }
 		cb(null, user);
 	});

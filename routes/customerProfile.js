@@ -7,15 +7,15 @@ let setUserRating = require('../services/profileServices').setUserRating;
 
 router.get('/', async (req, res, next) => {
 	let customerInfo = await getCustomerInfo('admin')
-	res.render('customerProfile', { customerId: customerInfo.userId, customerName: customerInfo.username, userType: customerInfo.userType, userRating: customerInfo.userRating});
+	res.render('customerProfile', { customerId: customerInfo.userId, customerName: customerInfo.email, userType: customerInfo.userType, userRating: customerInfo.userRating});
 });
 
 router.post("/", async (req, res, next) => {
 	let rating = req.body.rating;
-	let username = "admin";
-	await setUserRating(username, rating);
+	let email = "admin";
+	await setUserRating(email, rating);
 	res.redirect("/customerprofile");
-	// res.render('customerProfile', { customerName: customerInfo.username, userType: customerInfo.userType, userRating: customerInfo.userRating});
+	// res.render('customerProfile', { customerName: customerInfo.email, userType: customerInfo.userType, userRating: customerInfo.userRating});
 });
 
 module.exports = router;

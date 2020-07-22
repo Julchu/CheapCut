@@ -23,7 +23,7 @@ router.get("/:profileId", async (req, res, next) => {
 	// let data = await profileServices.getUserInfo(req.params.profileId);
 	let user = await profileServices.getUser(req.params.profileId);
 
-	res.render("barberProfile", {title: user.username, about: user.bio, contact: user.contactInfo, rating: user.rating, profileId: user.profileId});
+	res.render("barberProfile", {title: user.email, about: user.bio, contact: user.contactInfo, rating: user.rating, profileId: user.profileId});
 });
 
 /* Unnecessary when FE form can be set to GET request with action="profileId"/appointment/ */

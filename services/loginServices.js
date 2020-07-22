@@ -5,17 +5,17 @@ let Customer = require('../models/Users').Customer;
 let User = require('../models/Users').User;
 let bcryptServices = require("./bcryptServices");
 
-let createUser = async (username, password, userType) => {
+let createUser = async (email, password, userType) => {
 	let response = "";
 
-	/* 	Checks if barber's username exists in database
+	/* 	Checks if barber's email exists in database
 		If barber doesn't exist, create new barber object and save it to database
 	*/
-	if (username && password && (userType==="customer" || userType === "barber")) {
-		let exists = await User.find({ username: username });
-		// If username doesn't exist, check datatype to create specific user type (barber, customer)
+	if (email && password && (userType==="customer" || userType === "barber")) {
+		let exists = await User.find({ email: email });
+		// If email doesn't exist, check datatype to create specific user type (barber, customer)
 		if (exists == "") {
-			// If username doesn't exist, check datatype to create specific user type (barber, customer)
+			// If email doesn't exist, check datatype to create specific user type (barber, customer)
 			console.log("Trying to create user");
 			let encryptedPassword = await bcryptServices.encrypt(password);
 	
@@ -28,7 +28,7 @@ let createUser = async (username, password, userType) => {
 			}
 
 			// Default user attributes
-			newUser.username = username;
+			newUser.email = email;
 			newUser.password = encryptedPassword;
 			newUser.userType = userType;
 
