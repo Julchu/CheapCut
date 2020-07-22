@@ -37,7 +37,7 @@ let getUserInfo = async (profileId) => {
 		data.userType = user.userType;
 	}
 
-    return data;
+	return data;
 };
 
 let getCustomerInfo = async (profileId) => {
@@ -48,14 +48,14 @@ let getCustomerInfo = async (profileId) => {
 		console.log("No rating");
 	}
 	let customerInfo;
-    if (customer != "") {
+	if (customer != "") {
 		customerInfo = {
 			userId: customer.id,
 			username: customer.username,
-            userType: customer.userType,
-            userRating: customer.rating
+			userType: customer.userType,
+			userRating: customer.rating
 		}
-    }
+	}
 	return customerInfo	
 };
 
