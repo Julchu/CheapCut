@@ -25,10 +25,10 @@ var userSchema = new mongoose.Schema({
 	userType: {type: String, required: true, enum: ['customer', 'barber']},
 
 	// TODO: validate phone number (REGEX?)
-	phone: {type: Number},
+	phone: {type: Number, required: true},
 
-	// TODO: Facebook, Instagram APIs
-	contactInfo: [{type: String}],
+	// TODO: validate email
+	email: {type: String},
 
 	// Average of user's ratings from other people
 	rating: {type: Number},

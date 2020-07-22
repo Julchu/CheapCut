@@ -40,6 +40,11 @@ let getUserInfo = async (profileId) => {
 	return data;
 };
 
+let getUserEmail = async (profileId) => {
+	let user = await getUser(profileId);
+	return user.email;
+}
+
 let getCustomerInfo = async (profileId) => {
 	let customer = await getUser(profileId);
 	if (customer.rating) {
@@ -103,5 +108,5 @@ let setPassword = async (username, newPassword) => {
 
 module.exports = {
 	getUser, getCustomerInfo, getUserInfo, getUserId, getUserType,
-	setUserRating, setUsername, setPassword
+	setUserRating, setUsername, setPassword, getUserEmail
 };
