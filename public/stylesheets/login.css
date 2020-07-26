@@ -39,8 +39,10 @@ body {
 	padding: 0;
 	height: 5%;
 	background-color: white;
-	padding-left: 1%;
-	padding-top: 1%;
+}
+
+#middleInfoBar h1 {
+	/* font-size: 200%; */
 }
 
 #input {
