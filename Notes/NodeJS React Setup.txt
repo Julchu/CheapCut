@@ -1,0 +1,18 @@
+Run: mkdir testreactnode
+Run: cd testreactnode
+Run: express
+Run: npx create-react-app client
+Run: cd client
+Run: npm run build
+
+In server's app.js:
+
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+Change server's port to 3001 (or any that's not taken by React's 3000)
+
+Run in both server and client directories: npm install
